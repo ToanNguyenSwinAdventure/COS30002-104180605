@@ -6,7 +6,7 @@ This is the base repository for AI for Games @ Swinburne University. Students ar
 # 2024 AI for Games
 
 ## Who Am I?
-TODO: Add your name, student id, and easy email link here, formatted as a unordered list.
+I am Nguyen Khanh Toan, and my student ID is 104180605. I enrolled this unit since I want to know more about how to apply the AI concept into real situation rather than only study Searching in COS30019 - Introduction to Artificial Intelligent. And since my current major is Artificial Intelligent, so I want to dive more deep into Artificial Intelligent concept to accelerate my knowledge xD. And also I want to make fun of playing  and creating game and why not adding a AI bot that can challenge myself? ^^.
 
 ## Purpose
 * Your fork of this repository is for you and the teaching staff only. It should private and not be visible to the world.
