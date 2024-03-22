@@ -24,7 +24,7 @@ class TicTacToe(object):
 
     def show_gameresult(self):
         '''Show the game result winner/tie details'''
-        print(self.draw_board())
+        # print(self.draw_board())
         if self.winner == 'x':
             if self.bot == '3':
                 print('Winner is AI')
@@ -160,7 +160,7 @@ class TicTacToe(object):
             return 0*depth, None
         
         if player:
-            val = -9999999
+            val = -float('inf')
             for i in range(len(board)):
                 if board[i] == ' ':
                     board[i] = 'o'
@@ -171,7 +171,7 @@ class TicTacToe(object):
                         move = i
             return val, move
         else:
-            val = 9999999
+            val = float('inf')
             for i in range(len(board)):
                 if board[i] == ' ':
                     board[i] = 'x'
