@@ -47,15 +47,9 @@ class World(object):
 			currentHealth = self.averageEnemiesHealth()
 			if len(self.enemies) > 0:
 				maxHealth = self.enemies[0].maxHealth
-				window._update_label("enemy health", f"Average Enemy's' health: {currentHealth:.2f}/{maxHealth:.2f}")
-   
+				print("Enemy's' health:",currentHealth)  
 			if self.hunter.mode == "patrol":
-				window._update_label('hunter state', "Hunter's visit type: {}".format(self.hunter.FSM.currentState()))
-				window._update_label('hunter travelled', "Hunter's travelled distance: {}".format((int)(self.hunter.travelledDistance), ".2f"))
-			else:
-				window._update_label('hunter state', "Hunter's shooting mode: {}".format(self.hunter.FSM.currentState()))
-				window._update_label('hunter travelled', "")
-
+				print("Hunter's visit type: {}".format(self.hunter.FSM.currentState()))
 	def wrap_around(self, pos):
 		''' Treat world as a toroidal space. Updates parameter object pos '''
 		max_x, max_y = self.cx, self.cy

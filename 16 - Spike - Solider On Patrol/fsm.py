@@ -17,7 +17,7 @@ class FSM:
 		self.mode = self.hunter.mode
 
 		self.firstModeStates = ["seek", "arrive slowly", "arrive normally", "arrive fast"]
-		self.secondModeStates = ["shoot normally", "shoot doubly", "shoot spreadly", "shoot massively spreadly"]
+		self.secondModeStates = ["shoot normally"]
   
 		self.secondModeStates = self.secondModeStates[::-1]
 		
@@ -48,33 +48,6 @@ class FSM:
 			if len(self.hunter.projectiles) < 1:
 				if self.currentState() == "shoot normally":
 					self.hunter.projectiles.append(Projectile(self.hunter.world, self.hunter.color, self.hunter.pos.x, self.hunter.pos.y, projectileAcceleration.copy().normalise() * 1000.))
-
-				elif self.currentState() == "shoot doubly":
-					
-					# Calculte a position behind the current position of the hunter, so that the two projectiles seem to be shooted continuosly
-					behindPos = self.hunter.pos - projectileAcceleration.copy().normalise() * 15.
-					self.hunter.projectiles.append(Projectile(self.hunter.world, self.hunter.color, self.hunter.pos.x, self.hunter.pos.y, projectileAcceleration.copy().normalise() * 1000.))
-					self.hunter.projectiles.append(Projectile(self.hunter.world, self.hunter.color, behindPos.x, behindPos.y, projectileAcceleration.copy().normalise() * 1000.))
-
-				elif self.currentState() == "shoot spreadly":
-					
-					# -pi/12 rad (-15 deg)
-					rotateProjectileAccelerationLeft = Vector2D()
-					rotateProjectileAccelerationLeft.x = projectileAcceleration.x * cos(-3.14 / 12.) - projectileAcceleration.y * sin(-3.14 / 12.)
-					rotateProjectileAccelerationLeft.y = projectileAcceleration.y * sin(-3.14 / 12.) + projectileAcceleration.y * cos(-3.14 / 12.)
-     
-					self.hunter.projectiles.append(Projectile(self.hunter.world, self.hunter.color, self.hunter.pos.x, self.hunter.pos.y, rotateProjectileAccelerationLeft.copy().normalise() * 1000.))
-     
-					# pi/12 rad (15 deg)
-					rotateProjectileAccelerationRight = Vector2D()
-					rotateProjectileAccelerationRight.x = projectileAcceleration.x * cos(3.14 / 12.) - projectileAcceleration.y * sin(3.14 / 12.)
-					rotateProjectileAccelerationRight.y = projectileAcceleration.y * sin(3.14 / 12.) + projectileAcceleration.y * cos(3.14 / 12.)
-
-					self.hunter.projectiles.append(Projectile(self.hunter.world, self.hunter.color, self.hunter.pos.x, self.hunter.pos.y, rotateProjectileAccelerationRight.copy().normalise() * 1000.))
-     
-					# 0 rad accel
-					self.hunter.projectiles.append(Projectile(self.hunter.world, self.hunter.color, self.hunter.pos.x, self.hunter.pos.y, projectileAcceleration.copy().normalise() * 1000.))
-     
 				else:
 					self.hunter.projectiles.append(Projectile(self.hunter.world, self.hunter.color, self.hunter.pos.x, self.hunter.pos.y, projectileAcceleration.copy().normalise() * 1000.))
 				

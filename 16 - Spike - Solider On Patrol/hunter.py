@@ -124,7 +124,6 @@ class Hunter(Agent):
 
 	def update(self, delta):
 		self.force = self.calculate(delta)
-		print(self.force)
 		self.acceleration = self.force / self.mass
 		
 		# new velocity
