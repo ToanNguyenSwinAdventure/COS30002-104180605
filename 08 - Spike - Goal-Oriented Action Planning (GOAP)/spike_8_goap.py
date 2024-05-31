@@ -44,10 +44,13 @@ class GOAP_Agent:
                 self.goals[goal] += change
                 if self.goals[goal] <= 0:
                     self.goals[goal] = 0
-
+        
+        #Probability of action being executed
         successful = random.uniform(0.5, 0.8)
         if successful < self.probability[action]:
             utility = self.probability[action]
+
+        #Make sure the action don't raise the insistent level    
         if utility > 0 and goal in self.actions[action]:
             current_val = self.goals[goal]
             new_val = current_val + self.actions[action][goal]
