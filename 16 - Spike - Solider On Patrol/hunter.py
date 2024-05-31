@@ -113,12 +113,10 @@ class Hunter(Agent):
 		if self.mode == "patrol":
 			accel = self.FSM.run(targetPos)
 		elif self.mode == "attack":
-			# accel = Vector2D()
 			accel = self.attack()
 			self.vel = Vector2D()
 
-			# self.FSM.run(targetPos)
-			self.FSM.run(accel)
+			self.FSM.run(targetPos)
 		
 		self.acceleration = accel
 		
@@ -163,7 +161,6 @@ class Hunter(Agent):
 		# Update the deletability of projectiles
 		i = 0
 		while i < len(self.projectiles):
-
 			# Find the nearest enemy
 			nearestEnemy = None
 			distanceToNearestEnemy = float('inf')
